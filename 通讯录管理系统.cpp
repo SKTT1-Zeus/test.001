@@ -152,6 +152,34 @@ void deletePerson(Addresbooks* abs)
 	}
 }
 
+//查找联系人
+void findPerson(Addresbooks*abs)
+{
+	cout << "请输入您要查找的联系人" << endl;
+	string name;
+	cin >> name;
+
+	//判断指定的联系人是否存在于通讯录中
+	int ret = isExist(abs, name);
+	
+	if (ret != -1)//找到联系人
+	{
+		cout << "姓名：" << abs->personArray[ret].m_Name << "\t";
+		cout << "性别：" << abs->personArray[ret].m_Sex << "\t";
+		cout << "年龄：" << abs->personArray[ret].m_Age << "\t";
+		cout << "电话：" << abs->personArray[ret].m_Phone << "\t";
+		cout << "住址：" << abs->personArray[ret].m_Addr << "\t";
+	}
+	else
+	{
+		cout << "查无此人" << endl;
+
+	}
+	//按任意键清屏
+	system("pause");
+	system("cls");
+}
+
 //菜单界面
 void showMenu()
 {
@@ -204,6 +232,7 @@ int main()
 			deletePerson(&abs);
 			break;
 		case 4://查找联系人
+			findPerson(&abs);
 			break;
 		case 5://修改联系人
 			break;
